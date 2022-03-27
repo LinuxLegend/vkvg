@@ -140,9 +140,12 @@ vkh_src = [
     'vkh/src/vkh_presenter.c',
     'vkh/src/vkh_queue.c',
     'vkh/src/vkhelpers.c',
-    'vkh/src/deps/tinycthread.c',
     'vkh/src/VmaUsage.cpp'
 ]
+
+if (build_machine.system() == 'windows')
+    vkh_src += 'vkh/src/deps/tinycthread.c'
+endif
 
 vkh_include = [
     'vkh/include',
@@ -389,10 +392,6 @@ if (VKVG_ENABLE_PROFILING == true)
     ]
 endif
 
-# THIS IS THE PART WHERE DISABLING STRICT ANSI FIXES IT
-# Feel free to uncomment this line to see what happens
-vkvg_compile_options += '-U__STRICT_ANSI__ '
-
 vkvg_static_library = static_library('vkvg', 
                                     c_args: [vkvg_compile_options, '-DVKVG_STATIC_BUILD'],
                                     cpp_args: [vkvg_compile_options, '-DVKVG_STATIC_BUILD'],
@@ -428,8 +427,11 @@ test_engine_src = [
     'tests/common/vkengine.c',
     'tests/common/test.c',
     'tests/common/rnd.c',
-    'tests/common/tinycthread.c'
 ]
+
+if (build_machine.system() == 'windows')
+    test_engine_src += 'tests/common/tinycthread.c'
+endif
 
 test_engine_deps = [
     vkvg_static_dep,
