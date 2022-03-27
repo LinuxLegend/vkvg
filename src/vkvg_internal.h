@@ -73,7 +73,11 @@
 	#define MIN(a,b) ((a) < (b) ? (a) : (b))
 #endif
 
+#ifdef __unix__
+#include <threads.h>
+#else
 #include "deps/tinycthread.h"
+#endif
 #include "cross_os.h"
 //width of the stencil buffer will determine the number of context saving/restore layers
 //the two first bits of the stencil are the FILL and the CLIP bits, all other bits are

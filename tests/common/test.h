@@ -12,8 +12,21 @@
 #include "vkh_presenter.h"
 #include "vkh_phyinfo.h"
 
+#ifndef M_PIF
 #define M_PIF               3.14159265359f /* float pi */
+#endif
+#ifndef M_PIF_2
+#define M_PIF_2             1.5707963268f /* float pi */
+#endif
+#ifndef M_PI
+#define M_PI               3.14159265359f /* float pi */
+#endif
+#ifndef M_PI_2
+#define M_PI_2             1.5707963268f /* float pi */
+#endif
+#ifndef M_PIF_MULT_2
 #define M_PIF_MULT_2        6.28318530718f
+#endif
 
 #ifndef MIN
 # define MIN(a,b) (((a) < (b)) ? (a) : (b))

@@ -2,8 +2,11 @@
  * drawing from multiple contexts in separate threads on a single unguarded surface
  */
 #include "test.h"
+#ifdef __unix__
+#include <threads.h>
+#else
 #include "tinycthread.h"
-
+#endif
 #define THREAD_COUNT 32
 
 

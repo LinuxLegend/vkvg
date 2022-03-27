@@ -1,6 +1,9 @@
 #include "test.h"
-#include "tinycthread.h"
-
+#ifdef __unix__
+#include <threads.h>
+#else
+#include "deps/tinycthread.h"
+#endif
 #define THREAD_COUNT 16
 
 

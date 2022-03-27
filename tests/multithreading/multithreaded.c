@@ -3,8 +3,11 @@
  * guarded blit on final surface.
  */
 #include "test.h"
+#ifdef __unix__
+#include <threads.h>
+#else
 #include "tinycthread.h"
-
+#endif
 #define THREAD_COUNT 64
 
 
